@@ -1,0 +1,33 @@
+version: '3'
+services:
+  samba:
+    container-name: 'sambaad'
+    image: bmiddha/samba-ad-dc
+    ports:
+      - "53/tcp"
+      - "53/udp"
+      - "88/tcp"
+      - "88/udp"
+      - "123/udp"
+      - "135/tcp"
+      - "137/udp"
+      - "138/udp"
+      - "139/tcp"
+      - "389/tcp"
+      - "389/udp"
+      - "445/tcp"
+      - "464/tcp"
+      - "464/udp"
+      - "636/tcp"
+      - "3268/tcp"
+      - "3269/tcp"
+      - "49152-65535/tcp"
+
+    environment:
+      - hostname: 'sambaad'
+      - server_ip: '192.168.1.1'
+      - provision_new_domain: 0
+      - realm: 'EXAMPLE.COM'
+      - admin_user: 'username'
+      - admin_password: 'password'
+      - netbios: 'EXAMPLE'
